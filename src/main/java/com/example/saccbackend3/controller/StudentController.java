@@ -2,6 +2,7 @@ package com.example.saccbackend3.controller;
 
 import com.example.saccbackend3.entity.Student;
 import com.example.saccbackend3.service.StudentService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,12 @@ public class StudentController {
      * @return
      */
     @PostMapping("/add")
-    public String add(Student student){
+    public String add(@RequestBody Student student){
         //todo
-        return null;
+         if (studentService.addStudent(student))
+            return "新增成功!";
+         else
+             return "新增失败!";
     }
 
     /**
@@ -32,10 +36,13 @@ public class StudentController {
      * @param id
      * @return
      */
-    @DeleteMapping("/delete")
-    public String delete(String id){
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id){
         //todo
-        return null;
+        if (studentService.deleteStudentById(id))
+            return "删除成功!";
+        else
+            return "删除失败!";
     }
 
     /**
@@ -44,9 +51,12 @@ public class StudentController {
      * @return
      */
     @PutMapping("/update")
-    public String update(Student student){
+    public String update(@RequestBody Student student){
         //todo
-        return null;
+        if (studentService.updateStudent(student))
+            return "修改成功!";
+        else
+            return "修改失败!";
     }
 
     /**
@@ -56,7 +66,8 @@ public class StudentController {
     @GetMapping("/get")
     public List<Student> get(){
         //todo
-        return null;
+
+        return studentService.listStudent();
     }
 
     /**
@@ -65,9 +76,10 @@ public class StudentController {
      * @param end
      * @return
      */
-    @GetMapping("/getByAge")
-    public List<Student> findByAge(int start, int end){
+    @GetMapping("/getByAge/{start}/{end}")
+    public List<Student> findByAge(@PathVariable("start") Integer start, @PathVariable("end") Integer end){
         //todo
-        return null;
+
+        return studentService.listStudentByAges(start, end);
     }
 }
