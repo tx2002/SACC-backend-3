@@ -156,7 +156,7 @@ class MeiyaParser():
             df = pd.DataFrame(row_list)
 
             # Apply the replacement to each element in the DataFrame
-            df = df.map(lambda element: str(pattern2.sub('', element).encode('utf-8'), encoding='utf-8'))
+            df = df.applymap(lambda element: str(pattern2.sub('', element).encode('utf-8'), encoding='utf-8'))
 
             # Append to the existing CSV file or create a new one
             df.to_csv(csv_file_path, mode="a+", index=False, header=False, sep='\t',
