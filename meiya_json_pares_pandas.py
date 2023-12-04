@@ -1,7 +1,4 @@
-# -*- coding:utf-8 -*-
-# Author: zyazlj
-# Date: 2021-06-18
-# Version: py38
+%load_ext cudf.pandas
 import os
 import re
 import sys
