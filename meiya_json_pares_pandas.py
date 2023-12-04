@@ -12,7 +12,7 @@ import hashlib
 import ujson as json
 from jsoncomment import JsonComment
 import timeit
-import pandas as pd
+import cudf.pandas as pd
 
 json_parser = JsonComment(json)
 
