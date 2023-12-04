@@ -629,13 +629,7 @@ def main(argv):
     meiya_parser.set_out_put_path(outputfile)
     meiya_parser.main_parse_loop()
     meiya_parser.save_catalog()
-    # test
-    directory_to_delete = "C:\\Users\\Administrator\\Desktop\\新版_html\\新版_html\\output_csv"
-    delete_files_in_directory(directory_to_delete)
 
 
 if __name__ == "__main__":
-    timer = timeit.Timer(lambda: main(sys.argv[1:]))
-    execution_time = timer.timeit(number=10)  # 执行代码10次
-    print(f"代码执行平均时间：{execution_time / 10} 秒")
-    # main(sys.argv[1:])
+    main(sys.argv[1:])
